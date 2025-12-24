@@ -100,4 +100,14 @@
         </file>
   </files>
 
+<!--  <fileSets>-->
+<!--    <fileSet>-->
+<!--      <directory>../fluss-lake/fluss-lake-iceberg/target/dependencies</directory>-->
+<!--      <outputDirectory>plugins/iceberg/</outputDirectory>-->
+<!--      <includes>-->
+<!--        <include>*.jar</include>-->
+<!--      </includes>-->
+<!--      <fileMode>0644</fileMode>-->
+<!--    </fileSet>-->
+<!--  </fileSets>-->
 </assembly>
