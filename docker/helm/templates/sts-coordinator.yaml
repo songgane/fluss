@@ -69,6 +69,13 @@ spec:
               echo "advertised.listeners: CLIENT://${POD_NAME}.coordinator-server-hs.${POD_NAMESPACE}.svc.cluster.local:{{ .Values.appConfig.externalPort }}" >> $FLUSS_HOME/conf/server.yaml && \
 
               bin/coordinator-server.sh start-foreground
+          ports:
+            - name: internal
+              containerPort: {{ .Values.appConfig.internalPort }}
+              protocol: TCP
+            - name: client
+              containerPort: {{ .Values.appConfig.externalPort }}
+              protocol: TCP
           livenessProbe:
             failureThreshold: 100
             timeoutSeconds: 1

@@ -64,6 +64,13 @@ spec:
               echo "bind.listeners: INTERNAL://${POD_IP}:{{ .Values.appConfig.internalPort }}, CLIENT://0.0.0.0:{{ .Values.appConfig.externalPort }}" >> $FLUSS_HOME/conf/server.yaml && \
               echo "advertised.listeners: CLIENT://${POD_NAME}.tablet-server-hs.${POD_NAMESPACE}.svc.cluster.local:{{ .Values.appConfig.externalPort }}" >> $FLUSS_HOME/conf/server.yaml && \
               bin/tablet-server.sh start-foreground
+          ports:
+            - name: internal
+              containerPort: {{ .Values.appConfig.internalPort }}
+              protocol: TCP
+            - name: client
+              containerPort: {{ .Values.appConfig.externalPort }}
+              protocol: TCP
           livenessProbe:
             failureThreshold: 100
             timeoutSeconds: 1
